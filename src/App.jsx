@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { StoreProvider } from "./store/StoreContext"
 import ProtectedRoute from "./components/access/ProtectedRoute"
 import Login from "./components/access/Login"
+import Category from "./components/pages/developer/dashboard/category/Category"
 
 function App() {
   const queryClient = new QueryClient
@@ -25,6 +26,7 @@ function App() {
         <Route path="/home" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/single" element={<Single/>}/>
+        <Route path="/category" element={<Category/>}/>
       </Routes>
     </Router>
 

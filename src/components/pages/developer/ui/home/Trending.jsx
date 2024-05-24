@@ -19,6 +19,10 @@ const Trending = () => {
 
       );
 
+      const getTrending = () => post?.data.filter(item => item.post_category_id === 1)
+
+      
+
   return (
     <section className='py-10'>
         <div className="container">
@@ -27,7 +31,7 @@ const Trending = () => {
                     <Card/>
                 <div className='grid gap-10 md:grid-cols-2'>
                     
-                    {!isLoading && post?.data.slice(0,4).map(
+                    {!isLoading && getTrending().slice(0,4).map(
                         (item,key) => (
                     <div className='flex flex-col gap-10 '>
                         <div className="shadow-[4px_2px_10px_5px_rgba(0,0,0,0.1)] p-5 bg-primary rounded-2xl">

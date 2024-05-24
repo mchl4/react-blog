@@ -9,9 +9,10 @@ import {  useMutation, useQueryClient  } from '@tanstack/react-query'
 import useUploadPhoto from '../../../../custom-hook/useUploadPhoto'
 import { devBaseImgUrl } from '../../../../helpers/functions-general'
 import ModalWrapper from '../../ui/partials/modals/ModalWrapper'
-import { InputFileUpload, InputText, InputTextArea } from '../../../../helpers/FormInputs'
+import { InputFileUpload, InputSelect, InputText, InputTextArea } from '../../../../helpers/FormInputs'
 import SpinnerButton from '../../ui/partials/spinners/SpinnerButton'
 import { queryData } from '../../../../helpers/queryData'
+import useQueryData from '../../../../custom-hook/useQueryData'
 
 
 const ModalAddPost = ({itemEdit, position}) => {
@@ -21,6 +22,17 @@ const ModalAddPost = ({itemEdit, position}) => {
     const { uploadPhoto, handleChangePhoto, photo } = useUploadPhoto(
         `/v1/upload/photo`,
         dispatch
+      );
+
+      const {
+        isLoading,
+        isFetching,
+        error,
+        data: category,
+      } = useQueryData(
+        `/v1/category`, // endpoint
+        "get", // method
+        "category" // key
       );
 
     const queryClient = useQueryClient();
@@ -49,7 +61,7 @@ const ModalAddPost = ({itemEdit, position}) => {
         post_title:itemEdit ? itemEdit.post_title : "",
         post_image:itemEdit ? itemEdit.post_image : "",
         post_author:itemEdit ? itemEdit.post_author : "",
-        post_category:itemEdit ? itemEdit.post_category : "",
+        post_category_id:itemEdit ? itemEdit.post_category_id : "",
         post_article:itemEdit ? itemEdit.post_article : "",
         post_publish_date:itemEdit ? itemEdit.post_publish_date : ""
     }
@@ -57,7 +69,7 @@ const ModalAddPost = ({itemEdit, position}) => {
     const yupSchema = Yup.object({
         post_title: Yup.string().required("Required"),
         post_author: Yup.string().required("Required"),
-        post_category: Yup.string().required("Required"),
+        post_category_id: Yup.string().required("Required"),
         post_article: Yup.string().required("Required"),
         post_publish_date: Yup.string().required("Required"),
     })
@@ -111,13 +123,22 @@ const ModalAddPost = ({itemEdit, position}) => {
                                    />
                                </div>
 
+
                                <div className="input-wrap">
-                                   <InputText
-                                       label="Category"
-                                       type="text"
-                                       name="post_category"
-                                   />
-                               </div>
+                                        <InputSelect
+                                            label="Category"
+                                            type="text"
+                                            name="post_category_id">
+                                                {category?.data.map((item, key)=> (
+                                                    <React.Fragment key={key}>
+                                                        <option hidden>Select</option>
+                                                        <option value={item.category_aid} >{item.category_title}</option>
+                                                    </React.Fragment >
+                                                )
+                                            )} 
+                                        </InputSelect>
+                                </div>
+
 
 
                                <div className="input-wrap">

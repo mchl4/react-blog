@@ -41,7 +41,7 @@ const Post = () => {
 return (
   <>
   <section className='flex overflow-x-hidden'>
-      <Navigation/>
+      <Navigation menu="post"/>
       <main className='w-[calc(100%-250px)]'>
           <Header/>
 
@@ -49,7 +49,7 @@ return (
               <div className={`main-wrapper  px-4 py-3 w-full`}>
                   <div>
                       <h1 className='mb-0 text-accent'>Dashboard</h1>
-                      <p className='text-accent text-sm'>Home Projects Database</p>
+                      <p className='text-accent text-sm'>Post Articles</p>
                       
                       
                   </div>

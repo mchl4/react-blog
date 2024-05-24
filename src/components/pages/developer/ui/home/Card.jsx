@@ -1,8 +1,10 @@
 import React from 'react'
+import { devBaseImgUrl } from '../../../../helpers/functions-general'
 
 
-const Card = ({height="lg"}) => {
+const Card = ({height="lg", item}) => {
 
+  
      
 
   return (
@@ -13,22 +15,22 @@ const Card = ({height="lg"}) => {
 
        <div className={`overflow-hidden rounded-xl mb-5 -mt-10 ${height === "lg" ? "h-[500px]" : "h-[300]" }`}>
    
-       <img src="https://nylonmanila.com/wp-content/uploads/2024/04/Snapinstaapp_434295995_1674832539711146_829826258136214895_n_1080.jpg" alt="" className={`w-full object-cover $ rounded-xl  h-full overflow-hidden mb-5 hover:scale-110 transition-transform`}/>
+       <img src={`${devBaseImgUrl}/${item?.post_image}`} alt="" className={`w-full object-cover $ rounded-xl  h-full overflow-hidden mb-5 hover:scale-110 transition-transform`}/>
        </div>
    
    
        <small className='mb-3 hover:bg-accent bg-stone-600  px-2 py-1 rounded-lg text-white font-bold 
            text-xs'>PPOP</small>
    
-           <h2>BINI</h2>
-           <p className='line-clamp-3 text-balance'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, et atque nihil dignissimos quisquam consequatur assumenda placeat in, deleniti velit architecto unde asperiores veniam quae, provident amet nesciunt quibusdam ipsam?</p>
+           <h2>{item?.post_title}</h2>
+           <p className='line-clamp-3 text-balance'>{item?.post_article}</p>
    
            <div className='flex justify-between items-center mt-4'>
                <div className='flex gap-3 items-center'>
                    <img src="https://via.placeholder.com/40x40" alt="" className='rounded-full size-10 object-cover' />
                    <small className='mb-0 text-nowrap opacity-60'>Tantan</small>
                </div>
-               <small className='opacity-60'>May 22 2024</small>
+               <small className='opacity-60'>{item?.post_publish_date}</small>
            </div>
        </div>
 

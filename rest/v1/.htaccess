@@ -16,10 +16,10 @@ RewriteRule ^post/active/([0-9]+)$ controllers/post/active.php?postid=$1 [L]
 RewriteRule ^post/search$ controllers/post/search.php [L]
 
 ### SETTING ROLES ###
-RewriteRule ^services$ controllers/services/services.php [L]
-RewriteRule ^services/([0-9]+)$ controllers/services/services.php?servicesid=$1 [L]
-RewriteRule ^services/active/([0-9]+)$ controllers/services/active.php?servicesid=$1 [L]
-RewriteRule ^services/search$ controllers/services/search.php [L]
+RewriteRule ^category$ controllers/category/category.php [L]
+RewriteRule ^category/([0-9]+)$ controllers/category/category.php?categoryid=$1 [L]
+RewriteRule ^category/active/([0-9]+)$ controllers/category/active.php?categoryid=$1 [L]
+RewriteRule ^category/search$ controllers/category/search.php [L]
 
 RewriteRule ^upload/photo$ core/upload-photo.php [L]
 

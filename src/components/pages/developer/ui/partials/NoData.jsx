@@ -1,5 +1,6 @@
 import React from 'react'
-import IconNoData from '../svg/IconNoData'
+import IconNoData from '../../svg/IconNoData'
+
 
 const NoData = () => {
   return (
